@@ -1,0 +1,13 @@
+[package]
+name = "precompile"
+version = "0.1.0"
+authors = ["Wilfried Grondin <38542796+BloodHaawk@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+amethyst = { version = "0.13", features = ["vulkan"] }
+derive_more = "0.99"
+serde = "1.0"
+serde_derive = "1.0"

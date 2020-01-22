@@ -1,0 +1,9 @@
+[package]
+name = "r-smhup_1"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+[dependencies]
+precompile = { path = "precompile" }
+amethyst = { version = "0.13", features = ["vulkan"] }

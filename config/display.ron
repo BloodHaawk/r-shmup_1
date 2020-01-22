@@ -1,0 +1,6 @@
+#![enable(implicit_some)]
+
+(
+    title: "r-smhup_1",
+    dimensions: (500, 500),
+)
