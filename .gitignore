@@ -8,5 +8,5 @@ thumbs.db
 *.rs.bk
 *.swp
 
-# Assets
-*.png
+# VSCode
+.vscode

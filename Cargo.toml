@@ -6,4 +6,10 @@ edition = "2018"
 
 [dependencies]
 precompile = { path = "precompile" }
-amethyst = { version = "0.13", features = ["vulkan"] }
+amethyst = "0.13"
+objc = "=0.2.6"
+
+[features]
+empty = ["amethyst/empty"]
+metal = ["amethyst/metal"]
+vulkan = ["amethyst/vulkan"]

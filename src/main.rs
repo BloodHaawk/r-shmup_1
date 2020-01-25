@@ -13,6 +13,9 @@ use components::Player;
 
 use precompile::PrecompiledBundle;
 
+const SCREEN_WIDTH: f32 = 640.0;
+const SCREEN_HEIGHT: f32 = 480.0;
+
 struct MyState {
     spritesheet: Option<Handle<SpriteSheet>>,
 }
@@ -21,7 +24,7 @@ impl SimpleState for MyState {
     fn on_start(&mut self, data: StateData<'_, GameData<'_, '_>>) {
         let world = data.world;
 
-        self.spritesheet = Some(load_sprite_sheet(world, "characters.png", "characters.ron"));
+        self.spritesheet = Some(load_sprite_sheet(world, "player/reimu.frame0004.png", "player.ron"));
 
         initialise_camera(world);
 
@@ -30,10 +33,13 @@ impl SimpleState for MyState {
             sprite_number: 0,
         };
 
+        let mut player_transform = Transform::default();
+        player_transform.set_translation_xyz(SCREEN_WIDTH / 2.0, SCREEN_HEIGHT / 2.0, 0.0);
+
         world
             .create_entity()
             .with(sprite_render)
-            .with(Transform::default())
+            .with(player_transform)
             .with(Player)
             .build();
     }
@@ -59,7 +65,7 @@ fn main() -> amethyst::Result<()> {
             bindings_config_path: String::from("config/bindings.ron"),
         })?
         .with(
-            systems::MovePlayer { speed: 200.0 },
+            systems::MovePlayer { speed: 1000.0 },
             "move_player_system",
             &["input_system"],
         );
@@ -72,11 +78,11 @@ fn main() -> amethyst::Result<()> {
 
 fn initialise_camera(world: &mut World) {
     let mut camera_transform = Transform::default();
-    camera_transform.set_translation_xyz(250.0, 250.0, 1.0);
+    camera_transform.set_translation_xyz(SCREEN_WIDTH / 2.0, SCREEN_HEIGHT / 2.0, 1.0);
 
     world
         .create_entity()
-        .with(Camera::standard_2d(500.0, 500.0))
+        .with(Camera::standard_2d(SCREEN_WIDTH * 3.0, SCREEN_HEIGHT * 3.0))
         .with(camera_transform)
         .build();
 }
