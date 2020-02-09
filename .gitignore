@@ -10,3 +10,6 @@ thumbs.db
 
 # VSCode
 .vscode
+
+# Cargo config
+.cargo
