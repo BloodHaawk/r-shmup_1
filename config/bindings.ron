@@ -4,6 +4,7 @@
         Horizontal: Emulated(pos: Key(Right), neg: Key(Left)),
     },
     actions: {
-        Shoot: [[Key(Z)]]
+        Shoot: [[Key(Z)]],
+        Focus: [[Key(LShift)]],
     },
 )

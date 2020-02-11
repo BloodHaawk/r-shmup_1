@@ -23,7 +23,7 @@ fn main() -> amethyst::Result<()> {
         .with_system_desc(PrefabLoaderSystemDesc::<CameraPrefabData>::default(), "", &[])
         .with_system_desc(PrefabLoaderSystemDesc::<PlayerPrefabData>::default(), "", &[])
         .with(
-            systems::MovePlayer { speed: 1000.0 },
+            systems::MovePlayer { base_speed: 1000.0 },
             "move_player_system",
             &["input_system"],
         );
