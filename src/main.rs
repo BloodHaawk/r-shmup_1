@@ -22,11 +22,8 @@ fn main() -> amethyst::Result<()> {
         })?
         .with_system_desc(PrefabLoaderSystemDesc::<CameraPrefabData>::default(), "", &[])
         .with_system_desc(PrefabLoaderSystemDesc::<PlayerPrefabData>::default(), "", &[])
-        .with(
-            systems::MovePlayer { base_speed: 1000.0 },
-            "move_player_system",
-            &["input_system"],
-        );
+        // System is thread local because it must execute after InputSystem to reduce lag by 1 frame
+        .with_thread_local(systems::MovePlayer { base_speed: 1000.0 });
 
     Application::build("assets", LoadingState::default())?
         .build(game_data)?
